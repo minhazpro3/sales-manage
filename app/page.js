@@ -1,4 +1,5 @@
 "use client";
+import Banner from "@/components/Banner";
 import Header from "@/components/Header";
 import UserSidebar from "@/components/UserSidebar";
 import Image from "next/image";
@@ -11,8 +12,9 @@ export default function Home() {
   };
   return (
     <main className="">
-      <Header drawerFnc={drawerFnc} />
+      <Header drawerFnc={drawerFnc} drawer={drawer} />
       <UserSidebar drawerFnc={drawerFnc} drawer={drawer} />
+      <Banner />
     </main>
   );
 }

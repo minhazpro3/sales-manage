@@ -1,10 +1,9 @@
 "use client";
-
 import { RiMenu3Line } from "react-icons/ri";
-
-const Header = ({ drawerFnc }) => {
+import { RxCross2 } from "react-icons/rx";
+const Header = ({ drawerFnc, drawer }) => {
   return (
-    <div className="bg-gray-500 w-full ">
+    <div className="bg-gray-200 w-full ">
       <div className="container mx-auto px-8 md:px-0 ">
         <div className="flex justify-between items-center py-4 px-2   ">
           {/* logo */}
@@ -13,10 +12,10 @@ const Header = ({ drawerFnc }) => {
           </div>
           {/* responsive menu */}
           <div
-            className="visible place-self-end md:hidden "
+            className="visible place-self-end md:hidden hover:cursor-pointer"
             onClick={() => drawerFnc()}
           >
-            <RiMenu3Line size={22} />
+            {!drawer ? <RiMenu3Line size={22} /> : <RxCross2 size={24} />}
           </div>
           {/* sidebar */}
 
