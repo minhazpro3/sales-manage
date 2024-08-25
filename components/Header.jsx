@@ -3,7 +3,11 @@ import { RiMenu3Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import butterfly from "../public/images/butterfly.png";
 import Image from "next/image";
-const Header = ({ drawerFnc, drawer }) => {
+import { useContext } from "react";
+import { AppContext } from "@/app/contextApi/contextProvider";
+const Header = () => {
+  const { drawer, drawerFnc } = useContext(AppContext);
+
   return (
     <div className="bg-gray-200 w-full ">
       <div className="container mx-auto px-8 md:px-0 ">

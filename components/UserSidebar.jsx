@@ -1,12 +1,16 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import { IoMdHome } from "react-icons/io";
 import { LiaServicestack } from "react-icons/lia";
 import { RiPagesFill } from "react-icons/ri";
 import { MdRoundaboutRight } from "react-icons/md";
 import { IoMdLogOut } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { AppContext } from "@/app/contextApi/contextProvider";
 
-const UserSidebar = ({ drawerFnc, drawer }) => {
+const UserSidebar = () => {
+  const { drawer, drawerFnc } = useContext(AppContext);
+
   return (
     <div className="container mx-auto px-8 md:px-0 visible md:hidden  ">
       <div className="relative z-20">

@@ -9,14 +9,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Home() {
-  const [drawer, setDrawer] = useState(false);
-  const drawerFnc = () => {
-    setDrawer(!drawer);
-  };
   return (
     <main className=" overflow-x-hidden">
-      <Header drawerFnc={drawerFnc} drawer={drawer} />
-      <UserSidebar drawerFnc={drawerFnc} drawer={drawer} />
+      {/* <Header />
+      <UserSidebar /> */}
       <Banner />
       <OurServices />
       <ServicePlan />
