@@ -27,23 +27,28 @@ const OurServices = () => {
 
   return (
     <div className="container mx-auto px-8 md:px-0 my-6">
+      <h2 className="text-center my-6 text-3xl   md:text-4xl  py-6 text-purple-500">
+        We Work
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-4">
         {services.map((service, index) => (
           <div
             key={service.id}
-            className="bg-white py-4 group shadow-md hover:shadow-md shadow-gray-400 transition-colors duration-150 hover:bg-indigo-600 hover:bg-opacity-80 hover:cursor-pointer rounded-xl  px-3"
+            className="hover:bg-white py-4 group shadow-md hover:shadow-md shadow-gray-400 transition-colors duration-150  bg-indigo-500 bg-opacity-90 hover:bg-opacity-80 hover:cursor-pointer rounded-xl border-2 px-3"
           >
             <div className="">
               <div
-                className={`text-3xl ${index / 2 == 0 ? "text-red-900" : ""}`}
+                className={`text-3xl ${
+                  index / 2 == 0 ? "text-red-900" : ""
+                } bg-slate-300 py-2 px-2 rounded-r-full`}
               >
                 {service.icon}
-              </div>
-              <div>
-                <h2 className="text-2xl my-2 text-indigo-600 group-hover:text-white">
+                <h2 className="text-2xl my-2 text-indigo-600 group-hover:text-indigo-600 ">
                   {service.title}
                 </h2>
-                <p className="text-sm py-2 group-hover:text-white">
+              </div>
+              <div>
+                <p className="text-sm py-2 group-hover:text-indigo-600 text-white">
                   {service.desc}
                 </p>
               </div>

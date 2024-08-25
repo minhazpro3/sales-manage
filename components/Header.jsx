@@ -1,6 +1,8 @@
 "use client";
 import { RiMenu3Line } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
+import butterfly from "../public/images/butterfly.png";
+import Image from "next/image";
 const Header = ({ drawerFnc, drawer }) => {
   return (
     <div className="bg-gray-200 w-full ">
@@ -8,7 +10,7 @@ const Header = ({ drawerFnc, drawer }) => {
         <div className="flex justify-between items-center py-4 px-2   ">
           {/* logo */}
           <div>
-            <h3>Logo</h3>
+            <h3>logo</h3>
           </div>
           {/* responsive menu */}
           <div

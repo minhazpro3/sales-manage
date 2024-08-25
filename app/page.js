@@ -2,6 +2,7 @@
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
 import OurServices from "@/components/OurServices";
+import ServicePlan from "@/components/ServicePlan";
 import UserSidebar from "@/components/UserSidebar";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -12,11 +13,12 @@ export default function Home() {
     setDrawer(!drawer);
   };
   return (
-    <main className="">
+    <main className=" overflow-x-hidden">
       <Header drawerFnc={drawerFnc} drawer={drawer} />
       <UserSidebar drawerFnc={drawerFnc} drawer={drawer} />
       <Banner />
       <OurServices />
+      <ServicePlan />
     </main>
   );
 }
