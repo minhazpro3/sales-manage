@@ -8,8 +8,8 @@ import { RxCross2 } from "react-icons/rx";
 
 const UserSidebar = ({ drawerFnc, drawer }) => {
   return (
-    <div className="container mx-auto px-8 md:px-0 visible md:hidden">
-      <div className="relative">
+    <div className="container mx-auto px-8 md:px-0 visible md:hidden  ">
+      <div className="relative z-20">
         <div
           className={`${
             drawer ? "-left-10 sm:-left-24" : "-left-56 sm:-left-72"

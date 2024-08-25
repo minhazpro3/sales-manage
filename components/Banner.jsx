@@ -5,7 +5,7 @@ import { GoArrowUpRight } from "react-icons/go";
 
 const Banner = () => {
   return (
-    <div className="bg-amber-300 bg-opacity-30">
+    <div className="bg-amber-300 bg-opacity-30  ">
       <div className="container mx-auto px-8 md:px-0">
         <div className="md:flex justify-between items-center gap-6  ">
           <div className=" px-6 py-10  ">
@@ -25,8 +25,8 @@ const Banner = () => {
               Try now <GoArrowUpRight />
             </button>
           </div>
-          <div className=" flex justify-center">
-            <div className="relative w-[250px] h-[250px] sm:w-[450px] sm:h-[450px] md:w-[450px] md:h-[450px]">
+          <div className=" flex justify-center ">
+            <div className="relative w-[250px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[450px] md:h-[450px]">
               <Image src={butterfly} alt="" fill />
             </div>
           </div>

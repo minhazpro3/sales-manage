@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import Banner from "@/components/Banner";
 import Header from "@/components/Header";
@@ -19,6 +20,7 @@ export default function Home() {
       <Banner />
       <OurServices />
       <ServicePlan />
+      <div className="text-center text-3xl my-6">Let's Jump Function___</div>
     </main>
   );
 }
