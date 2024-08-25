@@ -1,9 +1,12 @@
+import AdminSidebar from "@/components/AdminSidebar";
 import React from "react";
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <div>Sidebar</div>
+      <div>
+        <AdminSidebar />
+      </div>
       <div>{children}</div>
     </div>
   );
