@@ -6,9 +6,11 @@ import OurServices from "@/components/OurServices";
 import ServicePlan from "@/components/ServicePlan";
 import UserSidebar from "@/components/UserSidebar";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "./contextApi/contextProvider";
 
 export default function Home() {
+  const { setNavDropdown, navDropdown } = useContext(AppContext);
   return (
     <main className=" overflow-x-hidden">
       {/* <Header />

@@ -5,14 +5,17 @@ export const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
   const [drawer, setDrawer] = useState(false);
-  console.log(drawer);
+  const [navDropdown, setNavDropdown] = useState(false);
+
   const drawerFnc = () => {
     setDrawer(!drawer);
   };
 
   return (
     <div>
-      <AppContext.Provider value={{ drawer, drawerFnc, setDrawer }}>
+      <AppContext.Provider
+        value={{ drawer, drawerFnc, setDrawer, navDropdown, setNavDropdown }}
+      >
         {children}
       </AppContext.Provider>
     </div>

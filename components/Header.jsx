@@ -5,8 +5,10 @@ import butterfly from "../public/images/butterfly.png";
 import Image from "next/image";
 import { useContext } from "react";
 import { AppContext } from "@/app/contextApi/contextProvider";
+import Link from "next/link";
 const Header = () => {
-  const { drawer, drawerFnc } = useContext(AppContext);
+  const { drawer, drawerFnc, setNavDropdown, navDropdown } =
+    useContext(AppContext);
 
   return (
     <div className="bg-gray-200 w-full ">
@@ -26,11 +28,57 @@ const Header = () => {
           {/* sidebar */}
 
           <div
-            className={` md:flex md:justify-between md:items-center md:gap-3 hidden md:visible md:bg-transparent   `}
+            className={` md:flex md:justify-between md:items-center   md:gap-3 hidden md:visible md:bg-transparent   `}
           >
             <ul className="link my-2">Home</ul>
             <ul className="link my-2">Services</ul>
-            <ul className="link my-2">pages</ul>
+
+            {/* Dropdown Container */}
+            <div className=" relative">
+              <ul
+                onClick={() => setNavDropdown(!navDropdown)}
+                className="link cursor-pointer flex items-center"
+              >
+                Pages{" "}
+                <svg
+                  className={`ml-1 w-4 h-4 text-gray-600 transition-transform duration-200 ${
+                    navDropdown ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </ul>
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute  left-0 top-6 z-20 ${
+                  navDropdown ? "block" : "hidden"
+                }`}
+              >
+                <ul
+                  onClick={() => setNavDropdown(false)}
+                  className=" bg-white w-full px-8 py-5 rounded-lg shadow-lg "
+                >
+                  <li className="hover:text-indigo-500">
+                    <Link href="/all-products"> Products</Link>
+                  </li>
+                  <li className="hover:text-indigo-500">
+                    <Link href="/admin-dashboard">Dashboard</Link>
+                  </li>
+                  <li className="hover:text-indigo-500">
+                    <Link href="/">Blog Post</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <ul className="link my-2">Profile</ul>
           </div>
         </div>
