@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import SearchAddProduct from "./SearchAddproduct";
 
 const AdminProducts = () => {
   return (
