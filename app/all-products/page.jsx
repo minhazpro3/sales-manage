@@ -1,8 +1,9 @@
 "use client";
+import Products from "@/components/dashboard/products";
 import React from "react";
 
 const Page = () => {
-  return <div>ALL your products</div>;
+  return <div>allproducts</div>;
 };
 
 export default Page;
