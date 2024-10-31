@@ -5,8 +5,9 @@ import React from "react";
 const Page = () => {
   return (
     <div className=" ">
-      <AddProductModal />
-      <AdminProducts />
+      {/* <AddProductModal /> */}
+      {/* <AdminProducts /> */}
+      <div>its my </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const AddProductModal = () => {
                 Add Product
               </h2>
               <button
-                //   onClick={onClose}
+                // onClick={showModal}
                 className="text-gray-600 hover:text-gray-900"
               >
                 <svg
@@ -129,7 +129,7 @@ const AddProductModal = () => {
               </span>
               <div className="md:flex items-center gap-2 ">
                 <button
-                  //   onClick={onClose}
+                  // onClick={showModal}
                   className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 focus:outline-none"
                 >
                   Cancel

@@ -9,21 +9,30 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("routing is working");
-});
-
-//  database connections
-
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    dbName: "sales-manage",
-  })
-  .then(() => {});
-
 // server
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running at on port ${PORT}`);
+mongoose
+  .connect(MONGODB_URI, {
+    dbName: "sales-manage",
+  })
+  .then(() => {
+    console.log("mongoose connected");
+  })
+  .catch((err) => {
+    console.log("mongoose error is");
+  });
+
+app.get("/gets", (req, res) => {
+  res.send("your bookings is heressssssssssssssss");
+});
+
+// app.get("at", (req, res) => {
+//   res.send("All products in this code here buddy");
+// });
+
+//  database connections
+
+app.listen(5000, () => {
+  console.log(`Server running on ${PORT}`);
 });
