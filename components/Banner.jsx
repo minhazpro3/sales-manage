@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import sales_man_1 from "../public/images/sales_man_1.png";
+import sales_man_2 from "../public/images/sales_man_2.png";
+import sales_man_3 from "../public/images/sales_man_3.png";
 import { GoArrowUpRight } from "react-icons/go";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -43,12 +45,12 @@ const Banner = () => {
                     consistent growth with our comprehensive, user-friendly
                     sales management platform.
                   </p>
-                  <button className="bg-purple-500 px-3 py-2 text-white rounded-md flex items-center gap-2">
+                  <button className="bg-purple-500 hover:bg-purple-800 px-3 py-2 text-white rounded-md flex items-center gap-2">
                     Try now <GoArrowUpRight />
                   </button>
                 </div>
                 <div className=" flex justify-center ">
-                  <div className="relative w-[250px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
+                  <div className="relative w-[200px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
                     <Image src={sales_man_1} alt="" fill />
                   </div>
                 </div>
@@ -75,13 +77,13 @@ const Banner = () => {
                     consistent growth with our comprehensive, user-friendly
                     sales management platform.
                   </p>
-                  <button className="bg-purple-500 px-3 py-2 text-white rounded-md flex items-center gap-2">
+                  <button className="bg-purple-500 hover:bg-purple-800 px-3 py-2 text-white rounded-md flex items-center gap-2">
                     Try now <GoArrowUpRight />
                   </button>
                 </div>
                 <div className=" flex justify-center ">
                   <div className="relative w-[250px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
-                    <Image src={sales_man_1} alt="" fill />
+                    <Image src={sales_man_2} alt="" fill />
                   </div>
                 </div>
               </div>
@@ -108,13 +110,13 @@ const Banner = () => {
                     consistent growth with our comprehensive, user-friendly
                     sales management platform.
                   </p>
-                  <button className="bg-purple-500 px-3 py-2 text-white rounded-md flex items-center gap-2">
+                  <button className="bg-purple-500 hover:bg-purple-800 px-3 py-2 text-white rounded-md flex items-center gap-2">
                     Try now <GoArrowUpRight />
                   </button>
                 </div>
                 <div className=" flex justify-center ">
-                  <div className="relative w-[250px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
-                    <Image src={sales_man_1} alt="" fill />
+                  <div className="relative w-[200px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
+                    <Image src={sales_man_3} alt="" fill />
                   </div>
                 </div>
               </div>

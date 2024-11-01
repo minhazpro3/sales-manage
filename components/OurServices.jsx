@@ -2,55 +2,71 @@ import React from "react";
 import { TbWorld } from "react-icons/tb";
 import { AiOutlineProduct } from "react-icons/ai";
 import { MdCoPresent } from "react-icons/md";
+import { CgPerformance } from "react-icons/cg";
+import { CiMobile1 } from "react-icons/ci";
+import { BiCustomize } from "react-icons/bi";
+import { TbPremiumRights } from "react-icons/tb";
 
 const OurServices = () => {
   const services = [
     {
       id: 1,
-      title: "Worldwide Service",
-      desc: "We assist businesses in accessing the best resources from around the world. Product offerings of different companies gets enriched and diversified with trading solutions from this",
-      icon: <TbWorld />,
+      title: "Super High Performance",
+      desc: "Built with performance in mind. The speed optimization is super fast compared to other themes.",
+      icon: <CgPerformance />,
     },
     {
       id: 2,
       title: "Products manage",
-      desc: "We have the capacity to deliver products when and where needed in any part of the country within 48 hours with our 360 degree distribution and logistics system.",
+      desc: "We have the capacity to deliver products when and where needed in any part of the country within 48 hours.",
       icon: <AiOutlineProduct />,
     },
     {
       id: 3,
       title: "Attendance",
-      desc: "We offer a complete array of sales and marketing services to open up new revenue opportunities for businesses in Bangladesh by ensuring products' distribution in all relevant channels all across the world",
+      desc: "We offer a complete array of sales and marketing services to open up new revenue opportunities.",
       icon: <MdCoPresent />,
+    },
+    {
+      id: 4,
+      title: "Mobile Friendly",
+      desc: "Vantage is designed and optimized to work perfectly, friendly on all mobile devices.",
+      icon: <CiMobile1 />,
+    },
+    {
+      id: 5,
+      title: "Easy to Use & Customize",
+      desc: "100% beginner, junior and creative friendly. Easily customize your store with well-thought-out options.  ",
+      icon: <BiCustomize />,
+    },
+    {
+      id: 6,
+      title: "Premium Features",
+      desc: "Increase traffic and sales with our premium features, all of which are optimized and easy to set up.",
+      icon: <TbPremiumRights />,
     },
   ];
 
   return (
-    <div className="container mx-auto px-8 md:px-0 my-6">
-      <h2 className="text-center my-6 text-3xl   md:text-4xl  py-6 text-purple-500">
-        We Work
-      </h2>
+    <div className="container mx-auto px-8 md:px-0 mt-6 mb-10">
+      <div className="flex justify-center">
+        <h2 className="my-6 text-3xl md:text-4xl pt-10 pb-4 font-semibold underline-gradient">
+          We Work
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 justify-center gap-4">
         {services.map((service, index) => (
           <div
             key={service.id}
-            className="hover:bg-white py-4 group shadow-md hover:shadow-md shadow-gray-400 transition-colors duration-150  bg-indigo-500 bg-opacity-90 hover:bg-opacity-80 hover:cursor-pointer rounded-xl border-2 px-3"
+            className="bg-[#f5f5f5] px-4 py-8 rounded-xl shadow-2xl shadow-[#d5d5d5] hover:scale-105 transition-all duration-300 ease-in-out"
           >
             <div className="">
-              <div
-                className={`text-3xl ${
-                  index / 2 == 0 ? "text-red-900" : ""
-                } bg-slate-300 py-2 px-2 rounded-r-full`}
-              >
+              <div className="my-5 text-4xl text-green-500 flex justify-center ">
                 {service.icon}
-                <h2 className="text-2xl my-2 text-indigo-600 group-hover:text-indigo-600 ">
-                  {service.title}
-                </h2>
               </div>
-              <div>
-                <p className="text-sm py-2 group-hover:text-indigo-600 text-white">
-                  {service.desc}
-                </p>
+              <div className="text-center">
+                <h2 className="  ">{service.title}</h2>
+                <p className="text-sm py-2 ">{service.desc}</p>
               </div>
             </div>
           </div>
