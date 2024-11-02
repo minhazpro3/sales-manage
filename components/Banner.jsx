@@ -14,7 +14,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 
 const Banner = () => {
   return (
-    <div>
+    <div className=" 0">
       <Swiper
         loop={true}
         autoplay={{
@@ -29,7 +29,7 @@ const Banner = () => {
         {/* slider 1 */}
         <SwiperSlide className=" ">
           {" "}
-          <div className="bg-gradient-to-r from-[#f0eccb] bg-opacity-100  ">
+          <div className="bg-gradient-to-r from-[#f0eccb] bg-opacity-100   ">
             <div className="container mx-auto px-8 md:px-0">
               <div className="md:grid grid-cols-2 items-center gap-6  ">
                 <div className=" px-6 py-10  ">
@@ -50,7 +50,7 @@ const Banner = () => {
                   </button>
                 </div>
                 <div className=" flex justify-center ">
-                  <div className="relative w-[200px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
+                  <div className="relative w-[200px]   h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
                     <Image src={sales_man_1} alt="" fill />
                   </div>
                 </div>
@@ -82,7 +82,7 @@ const Banner = () => {
                   </button>
                 </div>
                 <div className=" flex justify-center ">
-                  <div className="relative w-[250px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
+                  <div className="relative w-[250px]   h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
                     <Image src={sales_man_2} alt="" fill />
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const Banner = () => {
                   </button>
                 </div>
                 <div className=" flex justify-center ">
-                  <div className="relative w-[200px] -z-0 h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
+                  <div className="relative w-[200px]   h-[250px] sm:w-[450px] sm:h-[450px] md:w-[300px] md:h-[450px]">
                     <Image src={sales_man_3} alt="" fill />
                   </div>
                 </div>

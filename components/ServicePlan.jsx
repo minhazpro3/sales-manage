@@ -34,12 +34,16 @@ const ServicePlan = () => {
 
   return (
     <div className="container mx-auto px-8 md:px-0 my-6">
-      <h2 className="text-4xl my-6 text-center py-6  ">Our Plans</h2>
+      <div className="flex justify-center">
+        <h2 className="my-6 text-3xl md:text-4xl pt-10 pb-4 font-semibold underline-gradient">
+          We Offer
+        </h2>
+      </div>
       <div className="grid  md:grid-cols-3 justify-items-center gap-4 ">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className="px-4 group py-8 bg-gray-300  w-64 sm:w-10/12   rounded-lg hover:shadow-2xl hover:cursor-pointer  shadow-black"
+            className="px-4 group py-8 bg-[#f0f0f0]  w-64 sm:w-10/12   rounded-lg hover:shadow-2xl hover:cursor-pointer  shadow-black"
           >
             <div className="group-hover:border-gray-300 border-2 rounded-2xl border-indigo-500 p-4">
               <ul>

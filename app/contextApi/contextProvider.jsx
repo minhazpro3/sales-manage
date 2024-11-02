@@ -6,6 +6,8 @@ export const AppContext = createContext();
 const ContextProvider = ({ children }) => {
   const [drawer, setDrawer] = useState(false);
   const [navDropdown, setNavDropdown] = useState(false);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const drawerFnc = () => {
     setDrawer(!drawer);
@@ -14,7 +16,17 @@ const ContextProvider = ({ children }) => {
   return (
     <div>
       <AppContext.Provider
-        value={{ drawer, drawerFnc, setDrawer, navDropdown, setNavDropdown }}
+        value={{
+          drawer,
+          drawerFnc,
+          setDrawer,
+          navDropdown,
+          setNavDropdown,
+          activeTab,
+          setActiveTab,
+          sidebarOpen,
+          setSidebarOpen,
+        }}
       >
         {children}
       </AppContext.Provider>

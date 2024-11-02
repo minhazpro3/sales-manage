@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
 /* app/globals.css */
 
 @keyframes gradient-underline-shift {
@@ -71,4 +65,40 @@
 .bg-image > * {
   position: relative;
   z-index: 2;
+}
+
+/* we works company */
+/* Outer wrapper to set background and handle overflow */
+.marquee-wrapper {
+  overflow: hidden;
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
+
+/* Centered, responsive container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Marquee settings */
+.marquee {
+  display: flex;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 20px;
+  animation: marquee 15s linear infinite;
+}
+
+/* Keyframes for marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
