@@ -8,9 +8,11 @@ import {
   FiUser,
   FiTrendingUp,
   FiMenu,
+  FiX,
 } from "react-icons/fi";
 import { AppContext } from "../contextApi/contextProvider";
 import { usePathname } from "next/navigation";
+import ResponsiveHeader from "@/components/Header";
 
 const Layout = ({ children }) => {
   // const [activeTab, setActiveTab] = useState("overview");
@@ -18,28 +20,34 @@ const Layout = ({ children }) => {
   const { activeTab, setActiveTab } = useContext(AppContext);
   const pathname = usePathname();
 
-  // Check if the current route is "bla bla bla"
-  const isDashboard = pathname === "/dashboard";
-  const isAddProductRoute = pathname === "/dashboard/add-product";
-  console.log(pathname);
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   return (
-    <>
-      <div className="flex h-screen bg-gray-100">
+    <div>
+      <div className="flex items-start md:items-start">
+        {/* Mobile menu button */}
+        <button
+          onClick={toggleSidebar}
+          className="md:hidden p-4 text-gray-600 focus:outline-none top-0"
+        >
+          {sidebarOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+
         {/* Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 transform ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex md:flex-col md:w-64 bg-white shadow-lg`}
+          className={`fixed left-0 transform ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full "
+          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 max-h-lvh  md:w-2/12   `}
         >
           <div className="p-4 text-xl font-bold text-indigo-600">
-            {" "}
             Sales Dashboard
           </div>
           <nav className="flex flex-col gap-4 mt-6">
             <Link legacyBehavior href="/dashboard">
               <a
                 className={`flex items-center px-4 py-2 hover:bg-indigo-100 ${
-                  isDashboard
+                  pathname === "/dashboard"
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-gray-600"
                 }`}
@@ -50,7 +58,7 @@ const Layout = ({ children }) => {
             <Link legacyBehavior href="/dashboard/add-product">
               <a
                 className={`flex items-center px-4 py-2 hover:bg-indigo-100 ${
-                  isAddProductRoute
+                  pathname === "/dashboard/add-product"
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-gray-600"
                 }`}
@@ -58,45 +66,54 @@ const Layout = ({ children }) => {
                 <FiPlusSquare className="mr-3" /> Add Product
               </a>
             </Link>
-            {/* <Link legacyBehavior href="/dashboard/all-products">
+            <Link legacyBehavior href="/dashboard/our-products">
               <a
                 className={`flex items-center px-4 py-2 hover:bg-indigo-100 ${
-                  activeTab === "allProducts"
+                  pathname === "/dashboard/our-products"
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-gray-600"
                 }`}
               >
                 <FiList className="mr-3" /> All Products
               </a>
-            </Link> */}
-            {/* <Link legacyBehavior href="/dashboard/orders">
+            </Link>
+            <Link legacyBehavior href="/dashboard/orders">
               <a
                 className={`flex items-center px-4 py-2 hover:bg-indigo-100 ${
-                  activeTab === "orders"
+                  pathname === "/dashboard/orders"
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-gray-600"
                 }`}
               >
                 <FiTrendingUp className="mr-3" /> Orders
               </a>
-            </Link> */}
-            {/* <Link legacyBehavior href="/dashboard/profile">
+            </Link>
+            <Link legacyBehavior href="/dashboard/admin-profile">
               <a
                 className={`flex items-center px-4 py-2 hover:bg-indigo-100 ${
-                  activeTab === "profile"
+                  pathname === "/dashboard/admin-profile"
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-gray-600"
                 }`}
               >
                 <FiUser className="mr-3" /> Admin Profile
               </a>
-            </Link> */}
+            </Link>
           </nav>
         </aside>
 
-        <main className="">{children}</main>
+        {/* Overlay for Sidebar on Mobile */}
+        {sidebarOpen && (
+          <div
+            onClick={toggleSidebar}
+            className="fixed inset-0 bg-black opacity-50 z-20 md:hidden"
+          />
+        )}
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 md:w-10/12">{children}</main>
       </div>
-    </>
+    </div>
   );
 };
 

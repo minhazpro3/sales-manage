@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 const ResponsiveHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +16,14 @@ const ResponsiveHeader = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const router = usePathname();
+
   return (
     <header className="bg-white shadow-md w-full z-50">
       <div className="container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold text-indigo-600">
-          <Link href="/">MyLogo</Link>
+          <Link href="/">DUco</Link>
         </div>
 
         {/* Desktop Navigation */}
