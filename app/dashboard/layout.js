@@ -36,9 +36,9 @@ const Layout = ({ children }) => {
 
         {/* Sidebar */}
         <aside
-          className={`fixed left-0 transform ${
+          className={`fixed left-0 transform   ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full "
-          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 max-h-lvh  md:w-2/12   `}
+          } transition-transform duration-300 ease-in-out md:relative md:translate-x-0 max-h-lvh z-40 h-screen bg-white md:w-2/12   `}
         >
           <div className="p-4 text-xl font-bold text-indigo-600">
             Sales Dashboard
@@ -111,7 +111,9 @@ const Layout = ({ children }) => {
         )}
 
         {/* Main Content */}
-        <main className="flex-1 p-4 md:w-10/12">{children}</main>
+        <main className="flex-1   md:p-0 md:w-10/12 overflow-auto">
+          {children}
+        </main>
       </div>
     </div>
   );

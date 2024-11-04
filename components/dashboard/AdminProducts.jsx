@@ -21,7 +21,7 @@ const AdminProducts = () => {
           />
         </div>
       </div>
-      <div className=" overflow-x-scroll">
+      <div className="  ">
         <table className="min-w-full border border-gray-300 rounded-lg bg-gray-50 text-gray-800">
           <thead className="bg-indigo-600 text-white">
             <tr>

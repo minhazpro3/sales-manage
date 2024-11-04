@@ -4,28 +4,26 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [drawer, setDrawer] = useState(false);
-  const [navDropdown, setNavDropdown] = useState(false);
-  const [activeTab, setActiveTab] = useState("overview");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const drawerFnc = () => {
-    setDrawer(!drawer);
+  // toggle for header
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  // toggle end header
 
   return (
     <div>
       <AppContext.Provider
         value={{
-          drawer,
-          drawerFnc,
-          setDrawer,
-          navDropdown,
-          setNavDropdown,
-          activeTab,
-          setActiveTab,
-          sidebarOpen,
-          setSidebarOpen,
+          isOpen,
+          isDropdownOpen,
+          toggleMenu,
+          toggleDropdown,
         }}
       >
         {children}

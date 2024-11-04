@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+
 import { FiEdit, FiTrash } from "react-icons/fi";
 
 const OurProducts = () => {
@@ -47,7 +48,6 @@ const OurProducts = () => {
     );
     setSelectedProducts([]);
   };
-
   return (
     <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">

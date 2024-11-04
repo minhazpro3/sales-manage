@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 
 const Page = () => {
   return (
-    <div>
+    <div className="container mx-auto px-8 md:px-0">
       <AddProductModal />
     </div>
   );

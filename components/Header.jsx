@@ -1,25 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
-import { usePathname } from "next/navigation";
+import { AppContext } from "@/app/contextApi/contextProvider";
 
 const ResponsiveHeader = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const router = usePathname();
+  const { isOpen, isDropdownOpen, toggleMenu, toggleDropdown } =
+    useContext(AppContext);
 
   return (
-    <header className="bg-white shadow-md w-full z-50">
+    <header className="bg-white shadow-md w-full z-50 ">
       <div className="container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold text-indigo-600">

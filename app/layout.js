@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <ContextProvider>
           <div>
             <Header />
-            <UserSidebar />
+            {/* <UserSidebar /> */}
           </div>
           <div>{children}</div>
         </ContextProvider>

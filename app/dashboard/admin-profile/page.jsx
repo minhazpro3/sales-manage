@@ -3,8 +3,9 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div>
-      <AdminProfile />
+    <div className="container mx-auto">
+      {" "}
+      <AdminProfile />{" "}
     </div>
   );
 };
