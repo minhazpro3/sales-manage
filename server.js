@@ -1,38 +1,18 @@
-"use server";
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
-
-// middleware
-app.use(express.json());
-app.use(cors());
-
-// server
-const PORT = process.env.PORT || 5000;
+const { default: mongoose } = require("mongoose");
+const app = require("./api/app");
 
 mongoose
-  .connect(MONGODB_URI, {
-    dbName: "sales-manage",
-  })
+  .connect(process.env.MONGODB_URL)
   .then(() => {
-    console.log("mongoose connected");
+    console.log("mongodb connected");
   })
-  .catch((err) => {
-    console.log("mongoose error is");
+  .catch(() => {
+    console.log("mongodb not connected");
   });
 
-app.get("/gets", (req, res) => {
-  res.send("your bookings is heressssssssssssssss");
-});
+//   start server
+const PORT = process.env.PORT || 5000;
 
-// app.get("at", (req, res) => {
-//   res.send("All products in this code here buddy");
-// });
-
-//  database connections
-
-app.listen(5000, () => {
-  console.log(`Server running on ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -10,7 +10,6 @@ const AddProductModal = () => {
     formState: { errors },
   } = useForm();
   const [image, setImage] = useState(null);
-
   const [preview, setPreview] = useState(null);
 
   // generate & upload product image URL
@@ -34,18 +33,42 @@ const AddProductModal = () => {
     setPreview(URL.createObjectURL(file));
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form data:", data);
     alert("Product added successfully!");
-    const data1 = {
-      productName: data.productName,
+    const productData = {
+      name: data.productName,
       category: data.category,
       description: data.description,
       price: data.price,
       stock: data.stock,
-      imageURl: "",
+      image: image,
     };
     // Logic for form submission, e.g., send data to API
+    try {
+      // Send a POST request to the backend API
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/product`,
+        productData,
+        {
+          headers: {
+            "Content-Type": "application/json", // Adjust this based on your backend handling
+          },
+        }
+      );
+
+      // Check for successful response
+      if (response.status === 200) {
+        console.log("Product added:", response.data);
+        alert("Product added successfully!");
+      } else {
+        console.error("Error adding product:", response);
+        alert("Failed to add product.");
+      }
+    } catch (error) {
+      console.error("Error submitting product data:", error);
+      alert("An error occurred while adding the product.");
+    }
   };
 
   return (
