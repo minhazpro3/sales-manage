@@ -1,11 +1,10 @@
 [
   {
-    "id": 1,
-    "title": "Cadbury Dairy Milk Chocolate Bar, 360g",
-    "price": 23,
-    "des": "Let’s taste our way from the inside out. Crunchy biscuit sits in a soft cocoa centre, those two are wrapped in deliciously chewy caramel, and that’s then finished off with a thick layer of Cadbury milk chocolate. Mouth-watering yet? Give your taste buds the boost they’re calling for. Supporting sustainably sourced cocoa. Vegetarian friendly.",
-    "stock": 200,
-    "category": "chocolate",
-    "imgUrl": ""
+    "name": "Cadbury Dairy Milk Chocolate Bar, 360g",
+    "description": "Let’s taste our way from the inside out. Crunchy biscuit sits in a soft cocoa centre, those two are wrapped in deliciously chewy caramel, and that’s then finished off with a thick layer of Cadbury milk chocolate. Mouth-watering yet? Give your taste buds the boost they’re calling for. Supporting sustainably sourced cocoa. Vegetarian friendly.",
+    "category": "food",
+    "stock": 10,
+    "price": 53,
+    "image": "hello somethings"
   }
 ]

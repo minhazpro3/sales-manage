@@ -7,6 +7,7 @@ const AddProductModal = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [image, setImage] = useState(null);
@@ -30,12 +31,10 @@ const AddProductModal = () => {
       })
       .catch((error) => {});
     // show image on time
-    setPreview(URL.createObjectURL(file));
+    setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const onSubmit = async (data) => {
-    console.log("Form data:", data);
-    alert("Product added successfully!");
     const productData = {
       name: data.productName,
       category: data.category,
@@ -61,6 +60,9 @@ const AddProductModal = () => {
       if (response.status === 200) {
         console.log("Product added:", response.data);
         alert("Product added successfully!");
+        reset();
+        setPreview("");
+        setImage("");
       } else {
         console.error("Error adding product:", response);
         alert("Failed to add product.");
@@ -141,6 +143,8 @@ const AddProductModal = () => {
             <option value="clothing">Clothing</option>
             <option value="furniture">Furniture</option>
             <option value="toys">Toys</option>
+            <option value="food">Food</option>
+            <option value="books">Books</option>
           </select>
           {errors.category && (
             <p className="text-red-500 text-sm mt-1">
