@@ -1,27 +1,66 @@
 "use client";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 
 import { FiEdit, FiTrash } from "react-icons/fi";
+import axios from "axios";
+import { AppContext } from "@/app/contextApi/contextProvider";
+import Image from "next/image";
 
 const OurProducts = () => {
-  // Sample data
-  const [products, setProducts] = useState([
-    { id: 1, name: "Laptop", price: "$1200", stock: 10 },
-    { id: 2, name: "Smartphone", price: "$800", stock: 25 },
-    { id: 3, name: "Headphones", price: "$200", stock: 50 },
-    { id: 4, name: "Watch", price: "$250", stock: 15 },
-    // Add more products as needed
-  ]);
+  // all products
+  const { products, setProducts } = useContext(AppContext);
+
+  console.log("products", products);
+  const [productsData, setProductsData] = useState({});
+
+  const [currentPage, setCurrentPage] = useState(1);
+  console.log(currentPage);
 
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+
+  const itemsPerPage = 10;
+  // get all products
+  const getProduct = async () => {
+    try {
+      const products = await axios.get(
+        `http://localhost:5000/api/v1/product?page=${currentPage}&limit=${itemsPerPage}`
+      );
+      setProducts(products.data.products);
+      setProductsData(products.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProduct(currentPage);
+  }, [currentPage]);
 
   // Pagination logic
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedProducts = products.slice(startIndex, endIndex);
+  // const startIndex = currentPage + 1 * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
+  // const displayedProducts = products.slice(startIndex, endIndex);
+
+  // handle pagination
+  // 1
+  function handlePrev() {
+    setCurrentPage((p) => {
+      if (p === 0) {
+        console.log(p);
+        return p;
+      }
+      return p - 1;
+    });
+  }
+
+  // 2
+
+  function handleNext() {
+    if (currentPage < productsData.totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
 
   // Select all products
   const toggleSelectAll = () => {
@@ -42,12 +81,12 @@ const OurProducts = () => {
   };
 
   // Delete selected products
-  const handleDelete = () => {
-    setProducts(
-      products.filter((product) => !selectedProducts.includes(product.id))
-    );
-    setSelectedProducts([]);
-  };
+  // const handleDelete = () => {
+  //   setProducts(
+  //     products.filter((product) => !selectedProducts.includes(product.id))
+  //   );
+  //   setSelectedProducts([]);
+  // };
   return (
     <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
       <h1 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -62,8 +101,8 @@ const OurProducts = () => {
           className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <button
-          onClick={handleDelete}
-          disabled={!selectedProducts.length}
+          // onClick={handleDelete}
+          // disabled={!selectedProducts.length}
           className={`bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300 ${
             !selectedProducts.length ? "opacity-50 cursor-not-allowed" : ""
           }`}
@@ -81,9 +120,10 @@ const OurProducts = () => {
                 <input
                   type="checkbox"
                   onChange={toggleSelectAll}
-                  checked={selectedProducts.length === displayedProducts.length}
+                  // checked={selectedProducts.length === displayedProducts.length}
                 />
               </th>
+              <th className="p-4 text-left">Product Image</th>
               <th className="p-4 text-left">Product Name</th>
               <th className="p-4 text-left">Price</th>
               <th className="p-4 text-left">Stock</th>
@@ -91,7 +131,7 @@ const OurProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {displayedProducts.map((product) => (
+            {products.map((product) => (
               <tr key={product.id} className="hover:bg-gray-50">
                 <td className="p-4">
                   <input
@@ -100,13 +140,19 @@ const OurProducts = () => {
                     onChange={() => toggleSelectProduct(product.id)}
                   />
                 </td>
+                <td className="p-4">
+                  <div className="relative w-[50px] h-[50px] ">
+                    {" "}
+                    <Image src={product.image} alt="dairy milk" fill />
+                  </div>
+                </td>
                 <td className="p-4">{product.name}</td>
                 <td className="p-4">{product.price}</td>
                 <td className="p-4">{product.stock}</td>
                 <td className="p-4 flex items-center gap-2">
                   <Link
                     legacyBehavior
-                    href={`/dashboard/edit-product/${product.id}`}
+                    href={`/dashboard/edit-product/${product._id}`}
                   >
                     <a className="text-indigo-600 hover:text-indigo-800">
                       <FiEdit />
@@ -114,7 +160,7 @@ const OurProducts = () => {
                   </Link>
                   <button
                     onClick={() =>
-                      setProducts(products.filter((p) => p.id !== product.id))
+                      setProducts(products.filter((p) => p._id !== product._id))
                     }
                     className="text-red-600 hover:text-red-800"
                   >
@@ -130,7 +176,7 @@ const OurProducts = () => {
       {/* Pagination */}
       <div className="flex justify-between items-center mt-4">
         <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={handlePrev}
           disabled={currentPage === 1}
           className="px-4 py-2 bg-gray-200 rounded-md disabled:opacity-50"
         >
@@ -138,12 +184,8 @@ const OurProducts = () => {
         </button>
         <span className="text-gray-600">Page {currentPage}</span>
         <button
-          onClick={() =>
-            setCurrentPage((prev) =>
-              prev < Math.ceil(products.length / itemsPerPage) ? prev + 1 : prev
-            )
-          }
-          disabled={currentPage === Math.ceil(products.length / itemsPerPage)}
+          onClick={handleNext}
+          disabled={currentPage === productsData.totalPages}
           className="px-4 py-2 bg-gray-200 rounded-md disabled:opacity-50"
         >
           Next

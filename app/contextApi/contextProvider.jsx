@@ -4,6 +4,8 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
+  // products all
+  const [products, setProducts] = useState([]);
   // toggle for header
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -24,6 +26,8 @@ const ContextProvider = ({ children }) => {
           isDropdownOpen,
           toggleMenu,
           toggleDropdown,
+          products,
+          setProducts,
         }}
       >
         {children}
