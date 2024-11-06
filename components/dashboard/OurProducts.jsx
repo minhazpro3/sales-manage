@@ -37,17 +37,11 @@ const OurProducts = () => {
     getProduct(currentPage);
   }, [currentPage]);
 
-  // Pagination logic
-  // const startIndex = currentPage + 1 * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-  // const displayedProducts = products.slice(startIndex, endIndex);
-
   // handle pagination
   // 1
   function handlePrev() {
     setCurrentPage((p) => {
       if (p === 0) {
-        console.log(p);
         return p;
       }
       return p - 1;
@@ -61,6 +55,23 @@ const OurProducts = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+
+  // delete all products
+  const deleteProduct = async (id) => {
+    console.log(id);
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/api/v1/product/${id}`
+      );
+      if (response.status == 200) {
+        setProducts((prevProduct) =>
+          prevProduct.filter((product) => product._id !== id)
+        );
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   // Select all products
   const toggleSelectAll = () => {
@@ -159,9 +170,10 @@ const OurProducts = () => {
                     </a>
                   </Link>
                   <button
-                    onClick={() =>
-                      setProducts(products.filter((p) => p._id !== product._id))
-                    }
+                    // onClick={() =>
+                    //   setProducts(products.filter((p) => p._id !== product._id))
+                    // }
+                    onClick={() => deleteProduct(product._id)}
                     className="text-red-600 hover:text-red-800"
                   >
                     <FiTrash />
@@ -182,7 +194,9 @@ const OurProducts = () => {
         >
           Previous
         </button>
-        <span className="text-gray-600">Page {currentPage}</span>
+        <span className="text-gray-600">
+          Page {currentPage}/{productsData.totalPages}
+        </span>
         <button
           onClick={handleNext}
           disabled={currentPage === productsData.totalPages}
