@@ -52,3 +52,17 @@ exports.deleteProduct = async (req, res, next) => {
     next();
   }
 };
+
+// get product by search
+exports.getProductsBySearch = async (req, res, next) => {
+  const searchTeam = req.query.name;
+
+  try {
+    const products = await Product.find({
+      name: { $regex: searchTeam, $options: "i" },
+    });
+    res.status(200).send(products);
+  } catch (error) {
+    next();
+  }
+};

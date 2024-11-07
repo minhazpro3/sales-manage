@@ -56,9 +56,8 @@ const OurProducts = () => {
     }
   }
 
-  // delete all products
+  // delete a products
   const deleteProduct = async (id) => {
-    console.log(id);
     try {
       const response = await axios.delete(
         `http://localhost:5000/api/v1/product/${id}`
@@ -70,6 +69,23 @@ const OurProducts = () => {
       }
     } catch (error) {
       console.log(error.message);
+    }
+  };
+
+  // filter by search
+  const handleSearch = async (e) => {
+    const search = e.target.value;
+
+    if (search) {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/search?name=${search}`
+        );
+
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   };
 
@@ -108,6 +124,7 @@ const OurProducts = () => {
       <div className="mb-4 flex justify-between items-center">
         <input
           type="text"
+          onChange={handleSearch}
           placeholder="Search products..."
           className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
