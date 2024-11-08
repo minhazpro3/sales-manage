@@ -6,17 +6,17 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 import axios from "axios";
 import { AppContext } from "@/app/contextApi/contextProvider";
 import Image from "next/image";
+import EditProductModal from "./EditProductModal";
+import { useForm } from "react-hook-form";
 
 const OurProducts = () => {
   // all products
   const { products, setProducts } = useContext(AppContext);
-
-  console.log("products", products);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [updateID, setUpdateID] = useState({});
   const [productsData, setProductsData] = useState({});
-
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
-
+  const { register, handleSubmit, reset } = useForm();
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const itemsPerPage = 10;
@@ -82,13 +82,24 @@ const OurProducts = () => {
           `http://localhost:5000/api/v1/search?name=${search}`
         );
 
-        setProducts(response.data);
+        setProducts(response.data.slice(0, 10));
       } catch (error) {
         console.log(error.message);
       }
     }
   };
 
+  // modal open
+  const openModal = async (product) => {
+    if (product._id) {
+      setModalOpen(true);
+      setUpdateID(product);
+    } else {
+      setModalOpen(false);
+      setUpdateID({});
+      reset();
+    }
+  };
   // Select all products
   const toggleSelectAll = () => {
     if (selectedProducts.length === displayedProducts.length) {
@@ -160,7 +171,7 @@ const OurProducts = () => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product.id} className="hover:bg-gray-50">
+              <tr key={product._id} className="hover:bg-gray-50">
                 <td className="p-4">
                   <input
                     type="checkbox"
@@ -178,18 +189,13 @@ const OurProducts = () => {
                 <td className="p-4">{product.price}</td>
                 <td className="p-4">{product.stock}</td>
                 <td className="p-4 flex items-center gap-2">
-                  <Link
-                    legacyBehavior
-                    href={`/dashboard/edit-product/${product._id}`}
-                  >
-                    <a className="text-indigo-600 hover:text-indigo-800">
-                      <FiEdit />
-                    </a>
-                  </Link>
                   <button
-                    // onClick={() =>
-                    //   setProducts(products.filter((p) => p._id !== product._id))
-                    // }
+                    onClick={() => openModal(product)}
+                    className="text-indigo-600 hover:text-indigo-800"
+                  >
+                    <FiEdit />
+                  </button>
+                  <button
                     onClick={() => deleteProduct(product._id)}
                     className="text-red-600 hover:text-red-800"
                   >
@@ -222,6 +228,15 @@ const OurProducts = () => {
           Next
         </button>
       </div>
+      <EditProductModal
+        isOpen={isModalOpen}
+        openModal={openModal}
+        updateID={updateID}
+        register={register}
+        handleSubmit={handleSubmit}
+        reset={reset}
+        getProduct={getProduct}
+      />
     </div>
   );
 };

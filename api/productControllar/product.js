@@ -66,3 +66,21 @@ exports.getProductsBySearch = async (req, res, next) => {
     next();
   }
 };
+
+// update product
+exports.updateProduct = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json(updatedProduct);
+    if (!updatedProduct) {
+      res.status(500).send("Product not found!");
+    }
+  } catch (error) {
+    next();
+  }
+};
