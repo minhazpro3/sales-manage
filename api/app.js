@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const useRoute = require("../api/routers/product.route");
+const usersRoute = require("../api/routers/user.route");
 // initialize environment variable
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1", useRoute);
+app.use("/api/v1", usersRoute);
 
 app.get("/", (req, res) => {
   res.send("  is working");

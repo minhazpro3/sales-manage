@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
 const Product = require("../schemas/product.schemas");
-const ObjectId = require("mongodb").ObjectId;
 
 // save a new product
 exports.addProduct = async (req, res, next) => {
@@ -40,7 +38,6 @@ exports.deleteProduct = async (req, res, next) => {
     const id = req.params.id;
     const response = await Product.findByIdAndDelete(id);
 
-    console.log(response, "res");
     // Check if the product was found and deleted
     if (!response) {
       return res.status(404).json({ message: "Product not found" });
@@ -79,6 +76,20 @@ exports.updateProduct = async (req, res, next) => {
     res.status(200).json(updatedProduct);
     if (!updatedProduct) {
       res.status(500).send("Product not found!");
+    }
+  } catch (error) {
+    next();
+  }
+};
+
+// bulk-delete products
+
+exports.bulkDeleteProducts = async (req, res, next) => {
+  try {
+    const id = req.body.id.selectedProducts;
+    if (id.length > 0) {
+      const response = await Product.deleteMany({ _id: { $in: id } });
+      res.status(200).send(response);
     }
   } catch (error) {
     next();

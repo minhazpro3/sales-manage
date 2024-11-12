@@ -9,6 +9,7 @@ const ContextProvider = ({ children }) => {
   // toggle for header
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -28,6 +29,8 @@ const ContextProvider = ({ children }) => {
           toggleDropdown,
           products,
           setProducts,
+          loading,
+          setLoading,
         }}
       >
         {children}
