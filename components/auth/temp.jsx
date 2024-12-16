@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 const temp = () => {
+    const [errors,setErrors]=useState("")
   return (
     <div>
       <div className="flex justify-center items-center min-h-screen">
