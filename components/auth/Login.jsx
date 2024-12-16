@@ -26,30 +26,30 @@ const Login = () => {
   };
 
   // Process login data (send to backend)
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/api/v1/user/login`,
-        {
-          data: {
-            email: data.email,
-            password: data.password,
-          },
-        }
-      );
-      const { token } = response.data;
-      console.log(token);
-      if (token) {
-        console.log("creadiantial working");
-        setToken(token);
-      }
-      console.log(response);
-    } catch (error) {
-      if (error.status) {
-        alert(error.response.data);
-      }
-    }
-  };
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:5000/api/v1/user/login`,
+  //       {
+  //         data: {
+  //           email: data.email,
+  //           password: data.password,
+  //         },
+  //       }
+  //     );
+  //     const { token } = response.data;
+  //     console.log(token);
+  //     if (token) {
+  //       console.log("creadiantial working");
+  //       setToken(token);
+  //     }
+  //     console.log(response);
+  //   } catch (error) {
+  //     if (error.status) {
+  //       alert(error.response.data);
+  //     }
+  //   }
+  // };
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">

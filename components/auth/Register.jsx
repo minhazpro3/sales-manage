@@ -27,37 +27,37 @@ const Register = () => {
     // Facebook sign-up logic here
   };
 
-  const onSubmit = async (data) => {
-    // Process sign-up data (send to backend)
-    if (data?.password === data?.confirmPassword) {
-      try {
-        const response = await axios.post(
-          `http://localhost:5000/api/v1/user/register`,
-          {
-            data: {
-              email: data.email,
-              password: data.password,
-            },
-          }
-        );
-        const { token } = response.data;
-        console.log(token);
-        if (token) {
-          await signIn("credentials", {
-            redirect: false,
-            email: data.email,
-            token,
-          });
-          console.log("creadiantial working");
-        }
-        console.log(response);
-      } catch (error) {
-        if (error.status) {
-          alert(error.response.data);
-        }
-      }
-    }
-  };
+  // Process sign-up data (send to backend)
+  // const onSubmit = async (data) => {
+  //   if (data?.password === data?.confirmPassword) {
+  //     try {
+  //       const response = await axios.post(
+  //         `http://localhost:5000/api/v1/user/register`,
+  //         {
+  //           data: {
+  //             email: data.email,
+  //             password: data.password,
+  //           },
+  //         }
+  //       );
+  //       const { token } = response.data;
+  //       console.log(token);
+  //       if (token) {
+  //         await signIn("credentials", {
+  //           redirect: false,
+  //           email: data.email,
+  //           token,
+  //         });
+  //         console.log("creadiantial working");
+  //       }
+  //       console.log(response);
+  //     } catch (error) {
+  //       if (error.status) {
+  //         alert(error.response.data);
+  //       }
+  //     }
+  //   }
+  // };
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
