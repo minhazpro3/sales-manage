@@ -47,7 +47,7 @@ const AddProductModal = () => {
     try {
       // Send a POST request to the backend API
       const response = await axios.post(
-        `http://localhost:5000/api/v1/product`,
+        `https://duco-sales.vercel.app/api/v1/product`,
         productData,
         {
           headers: {

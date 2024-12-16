@@ -34,7 +34,7 @@ const OurProducts = () => {
     setLoading(true);
     try {
       const products = await axios.get(
-        `http://localhost:5000/api/v1/product?page=${currentPage}&limit=${itemsPerPage}`
+        `https://duco-sales.vercel.app/api/v1/product?page=${currentPage}&limit=${itemsPerPage}`
       );
       setProducts(products.data.products);
       setProductsData(products.data);
@@ -77,7 +77,7 @@ const OurProducts = () => {
     if (pendingDeleteId) {
       try {
         const response = await axios.delete(
-          `http://localhost:5000/api/v1/product/${pendingDeleteId}`
+          `https://duco-sales.vercel.app/api/v1/product/${pendingDeleteId}`
         );
         if (response.status == 200) {
           setProducts((prevProduct) =>
@@ -99,7 +99,7 @@ const OurProducts = () => {
     if (search) {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/v1/search?name=${search}`
+          `https://duco-sales.vercel.app/api/v1/search?name=${search}`
         );
 
         setProducts(response.data.slice(0, 10));
@@ -149,7 +149,7 @@ const OurProducts = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/v1/product/bulk-delete`,
+        `https://duco-sales.vercel.app/api/v1/product/bulk-delete`,
         {
           data: {
             id: { selectedProducts },

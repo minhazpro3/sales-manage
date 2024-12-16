@@ -13,7 +13,7 @@ const EditProductModal = ({
   const onSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/product/${updateID._id}`,
+        `https://duco-sales.vercel.app/api/v1/product/${updateID._id}`,
         data
       );
       if (response.status === 200) {
