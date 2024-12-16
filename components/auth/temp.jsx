@@ -15,10 +15,7 @@ const temp = () => {
             <button className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300">
               <FaGoogle className="mr-2" /> Login with Google
             </button>
-            <button
-              
-              className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            >
+            <button className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">
               <FaFacebook className="mr-2" /> Login with Facebook
             </button>
           </div>
@@ -115,16 +112,10 @@ const temp = () => {
 
           {/* Social Sign-up Buttons */}
           <div className="flex gap-4 mb-6">
-            <button
-              
-              className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300"
-            >
+            <button className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300">
               <FaGoogle className="mr-2" /> Sign up with Google
             </button>
-            <button
-            
-              className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-            >
+            <button className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">
               <FaFacebook className="mr-2" /> Sign up with Facebook
             </button>
           </div>
@@ -181,11 +172,7 @@ const temp = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 placeholder="Enter your password"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
-                </p>
-              )}
+              <p className="text-red-500 text-sm mt-1"></p>
             </div>
 
             <div>
