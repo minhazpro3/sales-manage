@@ -7,6 +7,7 @@ const {
   updateProduct,
   bulkDeleteProducts,
 } = require("../productControllar/product");
+
 const router = express.Router();
 
 router.route("/product").post(addProduct);

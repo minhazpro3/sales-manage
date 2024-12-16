@@ -1,57 +1,84 @@
-import { useState } from "react";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
-
-const SignUp = () => {
+import { useContext } from "react";
+import { AppContext } from "@/app/contextApi/contextProvider";
+const Login = () => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleGoogleSignUp = () => {
-    console.log("Sign up with Google");
-    // Add Google sign-up logic here
+  const { token, setToken } = useContext(AppContext);
+
+  const handleGoogleLogin = () => {
+    console.log("Login with Google");
+    // Google login logic here
   };
 
-  const handleFacebookSignUp = () => {
-    console.log("Sign up with Facebook");
-    // Add Facebook sign-up logic here
+  const handleFacebookLogin = () => {
+    console.log("Login with Facebook");
+    // Facebook login logic here
   };
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    // Process sign-up data (send to backend)
+  // Process login data (send to backend)
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/user/login`,
+        {
+          data: {
+            email: data.email,
+            password: data.password,
+          },
+        }
+      );
+      const { token } = response.data;
+      console.log(token);
+      if (token) {
+        console.log("creadiantial working");
+        setToken(token);
+      }
+      console.log(response);
+    } catch (error) {
+      if (error.status) {
+        alert(error.response.data);
+      }
+    }
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-4 sm:p-8 shadow-slate-800">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
-          Create an Account
+          Log In to Your Account
         </h2>
 
-        {/* Social Sign-up Buttons */}
-        <div className="flex gap-2   sm:gap-4 mb-6">
+        {/* Social Login Buttons */}
+        <div className="flex gap-4 mb-6">
           <button
-            onClick={handleGoogleSignUp}
-            className="flex items-center justify-center w-1/2 p-2  bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300 text-xs sm:text-base"
+            onClick={handleGoogleLogin}
+            className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300"
           >
-            <FaGoogle className="mr-2" /> SignUp with Google
+            <FaGoogle className="mr-2" /> Login with Google
           </button>
           <button
-            onClick={handleFacebookSignUp}
-            className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300 text-xs sm:text-base"
+            onClick={handleFacebookLogin}
+            className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
           >
-            <FaFacebook className="mr-2" /> SignUp with Facebook
+            <FaFacebook className="mr-2" /> Login with Facebook
           </button>
         </div>
 
         <div className="relative flex items-center justify-center text-gray-500 mb-6">
           <span className="absolute inset-x-0 h-px bg-gray-300"></span>
-          <span className="bg-white px-2 text-sm">Or sign up with email</span>
+          <span className="bg-white px-2 text-sm">Or log in with email</span>
         </div>
 
-        {/* Sign-Up Form */}
+        {/* Login Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label
@@ -105,42 +132,27 @@ const SignUp = () => {
             )}
           </div>
 
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-gray-700 font-medium mb-2"
+          <div className="flex justify-end">
+            <a
+              href="/forgot-password"
+              className="text-sm text-indigo-600 hover:underline"
             >
-              Re-type Password
-            </label>
-            <input
-              type="password"
-              {...register("confirmPassword", {
-                required: "Please confirm your password",
-                validate: (value) =>
-                  value === password || "Passwords do not match",
-              })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Re-enter your password"
-            />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.confirmPassword.message}
-              </p>
-            )}
+              Forgot Password?
+            </a>
           </div>
 
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300"
           >
-            Sign Up
+            Log In
           </button>
         </form>
 
         <p className="text-center text-gray-600 mt-4">
-          Already have an account?{" "}
-          <a href="/login" className="text-indigo-600 hover:underline">
-            Log In
+          Don't have an account?{" "}
+          <a href="/register" className="text-indigo-600 hover:underline">
+            Sign Up
           </a>
         </p>
       </div>
@@ -148,4 +160,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

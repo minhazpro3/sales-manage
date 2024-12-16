@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const useRoute = require("../api/routers/product.route");
 const usersRoute = require("../api/routers/user.route");
+
 // initialize environment variable
 dotenv.config();
 

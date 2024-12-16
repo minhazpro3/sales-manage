@@ -1,8 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
-
+import { useRouter } from "next/navigation";
 const Page = () => {
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   // Redirect to register if not authenticated
+  //   if (!token) {
+  //     router.push(`/register?redirect=/dashboard`);
+  //   }
+  // }, [router]);
+
   const [activeTab, setActiveTab] = useState("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (

@@ -1,5 +1,6 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   FiHome,
@@ -15,14 +16,22 @@ import { usePathname } from "next/navigation";
 import ResponsiveHeader from "@/components/Header";
 
 const Layout = ({ children }) => {
+  const router = useRouter();
   // const [activeTab, setActiveTab] = useState("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { activeTab, setActiveTab } = useContext(AppContext);
+  const { activeTab, setActiveTab, token, setToken } = useContext(AppContext);
+  console.log("tokennnnnnnnnnnnnnnn:", token);
   const pathname = usePathname();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // if (!token) {
+  //   router.push("/login");
+  //   return null;
+  // }
+
   return (
     <div>
       <div className="flex items-start md:items-start">

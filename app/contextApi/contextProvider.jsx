@@ -1,10 +1,12 @@
 "use client";
 /* eslint-disable react-hooks/rules-of-hooks */
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 export const AppContext = createContext();
 
 const ContextProvider = ({ children }) => {
   // products all
+  const [token, setToken] = useState(null);
+
   const [products, setProducts] = useState([]);
   // toggle for header
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +19,11 @@ const ContextProvider = ({ children }) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  // toggle end header
+  // get token
+  useEffect(() => {
+    const storedToken = sessionStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
 
   return (
     <div>
@@ -31,6 +37,8 @@ const ContextProvider = ({ children }) => {
           setProducts,
           loading,
           setLoading,
+          token,
+          setToken,
         }}
       >
         {children}
