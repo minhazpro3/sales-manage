@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
-const temp = () => {
+const Temp = () => {
     const [errors,setErrors]=useState("")
   return (
     <div>
@@ -220,4 +220,4 @@ const temp = () => {
   );
 }
 
-export default temp
+export default Temp
