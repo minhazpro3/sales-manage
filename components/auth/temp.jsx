@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 const temp = () => {
   return (
