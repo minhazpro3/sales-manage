@@ -8,6 +8,13 @@ const usersRoute = require("../api/routers/user.route");
 // initialize environment variable
 dotenv.config();
 
+app.use(
+  cors({
+    origin: "https://duco-sales.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  }))
+
 // initialize express & middleware
 const app = express();
 app.use(cors());
