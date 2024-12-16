@@ -5,14 +5,14 @@ const Temp = () => {
     const [errors,setErrors]=useState("")
   return (
     <div>
-      <div className="flex justify-center items-center min-h-screen">
+     {/*  <div className="flex justify-center items-center min-h-screen">
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
             Log In to Your Account
-          </h2>
+          </h2> */}
 
           {/* Social Login Buttons */}
-          <div className="flex gap-4 mb-6">
+         {/*  <div className="flex gap-4 mb-6">
             <button className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300">
               <FaGoogle className="mr-2" /> Login with Google
             </button>
@@ -24,10 +24,10 @@ const Temp = () => {
           <div className="relative flex items-center justify-center text-gray-500 mb-6">
             <span className="absolute inset-x-0 h-px bg-gray-300"></span>
             <span className="bg-white px-2 text-sm">Or log in with email</span>
-          </div>
+          </div> */}
 
           {/* Login Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label
                 htmlFor="email"
@@ -109,25 +109,25 @@ const Temp = () => {
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
             Create an Account
-          </h2>
+          </h2> */}
 
           {/* Social Sign-up Buttons */}
-          <div className="flex gap-4 mb-6">
+        {/*   <div className="flex gap-4 mb-6">
             <button className="flex items-center justify-center w-1/2 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300">
               <FaGoogle className="mr-2" /> Sign up with Google
             </button>
             <button className="flex items-center justify-center w-1/2 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">
               <FaFacebook className="mr-2" /> Sign up with Facebook
             </button>
-          </div>
+          </div> */}
 
-          <div className="relative flex items-center justify-center text-gray-500 mb-6">
+         {/*  <div className="relative flex items-center justify-center text-gray-500 mb-6">
             <span className="absolute inset-x-0 h-px bg-gray-300"></span>
             <span className="bg-white px-2 text-sm">Or sign up with email</span>
-          </div>
+          </div> */}
 
           {/* Sign-Up Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {/*   <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label
                 htmlFor="email"
@@ -206,16 +206,16 @@ const Temp = () => {
             >
               Sign Up
             </button>
-          </form>
+          </form> */}
 
-          <p className="text-center text-gray-600 mt-4">
+          {/* <p className="text-center text-gray-600 mt-4">
             Already have an account?{" "}
             <a href="/login" className="text-indigo-600 hover:underline">
               Log In
             </a>
-          </p>
-        </div>
-      </div>
+          </p> */}
+       {/*  </div>
+      </div> */}
     </div>
   );
 }
